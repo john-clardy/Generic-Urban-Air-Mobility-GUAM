@@ -94,7 +94,9 @@ powerplant.propel.plant.init.propD = 5.5*SimIn.Units.ft;              % ft     %
 % powerplant.propel.plant.init.rotationdir3 = [0; 0; 1];
 % powerplant.propel.plant.init.rotationdir4 = [0; 0; -1]; % (Add 5-8 if your struct supports it)
 
-powerplant.propel.plant.init.thrustdir = [0; 0; -1];    % Thrust direction (Upwards force, -Z in NED)
+% powerplant.propel.plant.init.thrustdir = [0; 0; -1];    % Thrust direction (Upwards force, -Z in NED)
+
+powerplant.propel.plant.init.thrustdir = SimIn.Model.Prop{9, 1}.e_b;    % Thrust direction (Upwards force, -Z in NED)
 
 %% Performance Limits
 powerplant.propel.plant.init.Pmax = 90*1000*SimIn.Units.W;              % ft-lbf/s     % Max Power (90 kW)
