@@ -152,7 +152,7 @@ powerplant.propel.plant.init.Pmax = 90*1000*SimIn.Units.W;              % ft-lbf
 % powerplant.propel.init.CPpoly = [0 0.0090];     % CP is constant approx 0.0090
 % powerplant.propel.init.effpoly = [0 0.75];      % Efficiency approx 0.75
 
-load('vehicles/Lift+Cruise/AeroProp/SFunction/APCSF_10x4p7_coef.mat')
+load('vehicles/Lift+Cruise/AeroProp/SFunction/PropCoef/APCSF_10x4p7_coef.mat')
 powerplant.propel.init.CTpoly = APCSF_10x4p7_coef(:,1);    	% CT is constant approx 0.0125
 powerplant.propel.init.CPpoly = APCSF_10x4p7_coef(:,2);     % CP is constant approx 0.0090
 powerplant.propel.init.effpoly = [0 0.75];
