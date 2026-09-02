@@ -128,14 +128,14 @@
 % Estimated per-motor ratings.
 % Approximately 116 kW/rotor is required at nominal hover.
 % 135 kW peak provides approximately 16% control/power margin.
-power_TO = 2.2000e+05 * SimIn.Units.W;       % [ft-lbf/s], 135 kW peak
+power_TO = 100100 * 5.25; %* SimIn.Units.W;       % [ft-lbf/s], 135 kW peak
 power_MC = power_TO/1.25 * SimIn.Units.W;       % [ft-lbf/s], 115 kW continuous
 
 
 % GUAM S-function rotor actuator permits speeds up to 350 rad/s.
 % Base speed is selected near the GUAM polynomial rotor limit:
 % 1600 rpm = 167.55 rad/s.
-speed_base = 77.8947;                       % [rad/s]
+speed_base = 167.55/100;                       % [rad/s]
 speed_max  = SimIn.Eng.PosLim_hi(9);                       % [rad/s]
 
 torque_TO = power_TO/speed_base;        % [lbf-ft], approximately 433 lbf-ft
@@ -233,7 +233,7 @@ mot.plant.init.t_max_trq = torque_TO;              % [lbf-ft]
 %% Torque-speed curves
 
 % Include the base-speed point and maximum-speed point only once.
-speed_array = linspace(speed_base,speed_max,20);
+speed_array = linspace(speed_base,speed_max,50);
 
 mot.plant.init.peak_to_cont_ratio = power_TO/power_MC;
 
