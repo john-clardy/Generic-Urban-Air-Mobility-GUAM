@@ -18,11 +18,12 @@
 
 aircrafttype = 'rotorcraft';
 aircraftconfig = 'hexacopter';
-geom.init.sw = 160.48; %ft^2
+geom.init.sw = (SimIn.Model.WingProp.Wing.b/2)*(SimIn.Model.WingProp.Wing.c_root+SimIn.Model.WingProp.Wing.c_tip); %ft^2 *S=(b/2)*(c_r+c_t)
 geom.init.l = sqrt(geom.init.sw);%ft
-geom.init.b = 38.35; %ft
-geom.init.cbar = 4.25;%ft
-geom.init.totalmass = 4800*SimIn.Units.lbm;     % lb2slug
+geom.init.b = SimIn.Model.WingProp.Wing.b; %ft
+geom.init.lambda = SimIn.Model.WingProp.Wing.c_tip+SimIn.Model.WingProp.Wing.c_root;
+geom.init.cbar = (2/3)*(SimIn.Model.WingProp.Wing.c_root)*((1+geom.init.lambda+geom.init.lambda^2)/(1+geom.init.lambda));
+geom.init.totalmass = SimIn.Model.mass;     % slug
 geom.init.totalweight = geom.init.totalmass*SimIn.Environment.Earth.Gravity.g0; %lbf
 
 geom.init.CG = [0 0 0]; % ft     % Center of Gravity location - 

@@ -73,6 +73,7 @@
 % mot.plant.init.trq_neg_max.idx1_spd = -1 * spd_vector;
 % mot.plant.init.trq_neg_max.map = -1 * mot.plant.init.trq_max.map;
 
+%=============================================================================================================
 
 % File description
 % Name : quadcopter_init (ADAPTED for NASA L+C Lift Rotor)
@@ -83,7 +84,7 @@
 powerplant.propel.plant.init.rotorcorediam = 0.30*SimIn.Units.m;      % ft     % Hub diameter (approx 30cm)
 powerplant.propel.plant.init.Wprop = 2.0*SimIn.Units.kg*SimIn.Environment.Earth.Gravity.g0;              % lbf     % Propeller weight (approx 2kg)
 powerplant.propel.plant.init.Iprop = 0.025*SimIn.Units.kg*SimIn.Units.m2;             % slug-ft^2 % Propeller Inertia (Bulk of the 0.028 total)
-powerplant.propel.plant.init.propD = 5.5*SimIn.Units.ft;              % ft     % Diameter (5.5 ft)
+powerplant.propel.plant.init.propD = SimIn.Model.Prop{9, 1}.Dp;              % ft     % Diameter (9 ft)
 
 %% Rotation Direction (CRITICAL: NASA L+C alternates)
 % You must manually assign this for each of the 8 rotors. 
@@ -99,7 +100,7 @@ powerplant.propel.plant.init.propD = 5.5*SimIn.Units.ft;              % ft     %
 powerplant.propel.plant.init.thrustdir = SimIn.Model.Prop{9, 1}.e_b;    % Thrust direction (Upwards force, -Z in NED)
 
 %% Performance Limits
-powerplant.propel.plant.init.Pmax = 90*1000*SimIn.Units.W;              % ft-lbf/s     % Max Power (90 kW)
+powerplant.propel.plant.init.Pmax = 100100 * 5.25;              % ft-lbf/s     % Max Power (90 kW)(250kw)
 
 %% Aerodynamic Maps (CP / CT)
 % Using a simplified constant map based on NASA Hover targets
@@ -126,27 +127,6 @@ powerplant.propel.plant.init.Pmax = 90*1000*SimIn.Units.W;              % ft-lbf
 %     1200 0.114183316363509 0.0498097438458182 0.204022634362644;
 %     1500 0.114183316363509 0.0498097438458182 0.204022634362644;
 %     2000 0.114183316363509 0.0498097438458182 0.204022634362644];
-
-
-% data1 = load('apcsf_10x4p7_4014.csv');
-% data2 = load('apcsf_10x4p7_4997.csv');
-% data3 = load('apcsf_10x4p7_5018.csv');
-% data4 = load('apcsf_10x4p7_6020.csv');
-% data5 = load('apcsf_10x4p7_6023.csv');
-% data6 = load('apcsf_10x4p7_6512.csv');
-% data7 = load('apcsf_10x4p7_6513.csv');
-% 
-% J_data  = [data1(:,1); data2(:,1); data3(:,1); data4(:,1); ...
-%            data5(:,1); data6(:,1); data7(:,1)];
-% 
-% CT_data = [data1(:,2); data2(:,2); data3(:,2); data4(:,2); ...
-%            data5(:,2); data6(:,2); data7(:,2)];
-% 
-% CP_data = [data1(:,3); data2(:,3); data3(:,3); data4(:,3); ...
-%            data5(:,3); data6(:,3); data7(:,3)];
-% 
-% CT_poly = polyfit(J_data, CT_data, 2);
-% CP_poly = polyfit(J_data, CP_data, 2);
 
 %% Polynomial Fallbacks (Required by some simulink blocks)
 % Constant approximation derived from the map above
