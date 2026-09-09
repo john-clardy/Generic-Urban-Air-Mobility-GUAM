@@ -128,8 +128,9 @@
 % Estimated per-motor ratings.
 % Approximately 116 kW/rotor is required at nominal hover.
 % 135 kW peak provides approximately 16% control/power margin.
-power_TO = 100100 * 5.25; %* SimIn.Units.W;       % [ft-lbf/s], 135 kW peak
-power_MC = power_TO/1.25 * SimIn.Units.W;       % [ft-lbf/s], 115 kW continuous
+% power_TO = 100100 ;%*5.25; %* SimIn.Units.W;       % [ft-lbf/s], 135 kW peak
+power_TO = 530*550;
+power_MC = power_TO/1.25; %* SimIn.Units.W;       % [ft-lbf/s], 115 kW continuous
 
 
 % GUAM S-function rotor actuator permits speeds up to 350 rad/s.

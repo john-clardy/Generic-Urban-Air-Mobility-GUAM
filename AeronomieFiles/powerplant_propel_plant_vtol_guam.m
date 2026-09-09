@@ -100,7 +100,8 @@ powerplant.propel.plant.init.propD = SimIn.Model.Prop{9, 1}.Dp;              % f
 powerplant.propel.plant.init.thrustdir = SimIn.Model.Prop{9, 1}.e_b;    % Thrust direction (Upwards force, -Z in NED)
 
 %% Performance Limits
-powerplant.propel.plant.init.Pmax = 100100 * 5.25;              % ft-lbf/s     % Max Power (90 kW)(250kw)
+% powerplant.propel.plant.init.Pmax = 100100 ;%* 5.25;              % ft-lbf/s     % Max Power (90 kW)(250kw)
+powerplant.propel.plant.init.Pmax = 530*550;
 
 %% Aerodynamic Maps (CP / CT)
 % Using a simplified constant map based on NASA Hover targets
