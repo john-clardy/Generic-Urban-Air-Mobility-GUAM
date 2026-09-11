@@ -101,43 +101,12 @@ powerplant.propel.plant.init.thrustdir = SimIn.Model.Prop{9, 1}.e_b;    % Thrust
 
 %% Performance Limits
 % powerplant.propel.plant.init.Pmax = 100100 ;%* 5.25;              % ft-lbf/s     % Max Power (90 kW)(250kw)
-powerplant.propel.plant.init.Pmax = 530*550;
+powerplant.propel.plant.init.Pmax = 530*550; %530hp
 
 %% Aerodynamic Maps (CP / CT)
-% Using a simplified constant map based on NASA Hover targets
-% NASA Hover: ~1050 RPM (17.5 rps), Thrust coeff (CT) ~ 0.0125
-% We populate the table rows for RPMs from 0 to 1500 (25 rps)
-
-%RPS is revolution per second, RPS is needed for prop CP Equations
-
-% % Columns: [RPM, CT, CP, Efficiency]
-% powerplant.propel.plant.init.CP_CT_map = ...
-%   [0    0.0125 0.0090 0.0;
-%    500  0.0125 0.0090 0.60;
-%    800  0.0125 0.0090 0.70;
-%    1050 0.0125 0.0090 0.75; % Hover Point
-%    1200 0.0120 0.0088 0.72;
-%    1500 0.0110 0.0085 0.65;
-%    2000 0.0100 0.0080 0.60];
-
-% powerplant.propel.plant.init.CP_CT_map = ...
-%     [0 0.114183316363509 0.0498097438458182 0.204022634362644;
-%     500 0.114183316363509 0.0498097438458182 0.204022634362644;
-%     800 0.114183316363509 0.0498097438458182 0.204022634362644;
-%     1050 0.114183316363509 0.0498097438458182 0.204022634362644;
-%     1200 0.114183316363509 0.0498097438458182 0.204022634362644;
-%     1500 0.114183316363509 0.0498097438458182 0.204022634362644;
-%     2000 0.114183316363509 0.0498097438458182 0.204022634362644];
-
-%% Polynomial Fallbacks (Required by some simulink blocks)
-% Constant approximation derived from the map above
-% powerplant.propel.init.CTpoly = [0 0.0125];    	% CT is constant approx 0.0125
-% powerplant.propel.init.CPpoly = [0 0.0090];     % CP is constant approx 0.0090
-% powerplant.propel.init.effpoly = [0 0.75];      % Efficiency approx 0.75
-
 load('vehicles/Lift+Cruise/AeroProp/SFunction/PropCoef/APCSF_10x4p7_coef.mat')
-powerplant.propel.init.CTpoly = APCSF_10x4p7_coef(:,1);    	% CT is constant approx 0.0125
-powerplant.propel.init.CPpoly = APCSF_10x4p7_coef(:,2);     % CP is constant approx 0.0090
+powerplant.propel.init.CTpoly = APCSF_10x4p7_coef(:,1);
+powerplant.propel.init.CPpoly = APCSF_10x4p7_coef(:,2);
 powerplant.propel.init.effpoly = [0 0.75];
 
 %% Controller Initial Conditions (Trim State)
