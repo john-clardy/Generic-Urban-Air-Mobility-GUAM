@@ -27,14 +27,14 @@ ARGS{6} = coder.typeof(logical(0)); % ders
 if generateLib
   disp('Generating LpC_wrapper static library...');
   cfglib = coder.config('lib');
-  cfglib.Toolchain = 'MinGW64 | CMake/gmake (64-bit Windows)';
+  %cfglib.Toolchain = 'MinGW64 | CMake/gmake (64-bit Windows)'; %Windows
   cfglib.EnableOpenMP = false;
   cfglib.SupportNonFinite = false;
   codegen -config cfglib -report LpC_wrapper -args ARGS;
   
   objpath = sprintf('%s/obj', SimIn.vehiclepath);
   if ispc
-    %libext = 'lib';
+    %libext = 'lib'; %Update libext for Windows to 'a'
     libext = 'a';
     osDir = 'windows';
   elseif ismac
