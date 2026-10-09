@@ -13,10 +13,10 @@
 %  MATLAB version: 9.6.0.1150989 (R2019a) Update 4
 % -------------------------------------------------------------------
 
-powerplant.tc.plant.init.ratio = 1; % Gear ratio for motor to propeller
-powerplant.tc.plant.init.inertia = 0;
-powerplant.tc.plant.init.mass.total = 10;
-powerplant.tc.plant.init.spd_thresh = 10;
-powerplant.tc.plant.init.eff_max = 1;
+aeronomie.m5.powerplant.tc.plant.init.ratio = 1; % Gear ratio for motor to propeller
+aeronomie.m5.powerplant.tc.plant.init.inertia = 0;
+aeronomie.m5.powerplant.tc.plant.init.mass.total = 10;
+aeronomie.m5.powerplant.tc.plant.init.spd_thresh = 10;
+aeronomie.m5.powerplant.tc.plant.init.eff_max = 1;
 
 

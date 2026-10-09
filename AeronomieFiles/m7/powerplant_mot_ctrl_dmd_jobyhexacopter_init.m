@@ -29,9 +29,9 @@
 
 %above not needed setting PID values here
 
-powerplant.mot.ctrl.init.P = 100*0.08;
-powerplant.mot.ctrl.init.I = 100*0.014;
-powerplant.mot.ctrl.init.D = 100*0.002;
-% powerplant.mot.plant.init.motormass = massEM + massInv;            % kg   % Mass of motor
+aeronomie.m7.powerplant.mot.ctrl.init.P = 100*0.08;
+aeronomie.m7.powerplant.mot.ctrl.init.I = 100*0.014;
+aeronomie.m7.powerplant.mot.ctrl.init.D = 100*0.002;
+% aeronomie.m7.powerplant.mot.plant.init.motormass = massEM + massInv;            % kg   % Mass of motor
 
 clear power_TO speed_base torque_TO massEM massInv
